@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elsword Album - Paths of Elios</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;600;800&display=swap"
+        rel="stylesheet">
+    <!-- Style -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Sound & Reset Controls -->
+    <button id="sound-toggle" class="sound-btn" aria-label="Toggle Sound">
+        <svg class="sound-icon-on" viewBox="0 0 24 24" width="24" height="24">
+            <path fill="currentColor"
+                d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18,19.86 21,16.28 21,12C21,7.72 18,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+        </svg>
+        <svg class="sound-icon-off hidden" viewBox="0 0 24 24" width="24" height="24">
+            <path fill="currentColor"
+                d="M12,4L9.91,6.09L12,8.18M4.27,3L3,4.27L7.73,9H3V15H7L12,20V13.27L16.25,17.5C15.58,18 14.83,18.4 14,18.71V20.77C15.38,20.44 16.63,19.78 17.7,18.9L20.73,21.93L22,20.66L4.27,3M14,3.23V5.29C14.73,5.5 15.43,5.83 16.07,6.26L14.59,7.74C14.41,7.65 14.21,7.58 14,7.54V9.54L19,14.54C19,13.7 19,12.85 19,12C19,7.72 16,4.14 14,3.23M16.5,12C16.5,11.2 16.1,10.5 15.5,10.05L14,11.55V12.45L15.46,13.9C15.48,13.28 16.5,12.62 16.5,12Z" />
+        </svg>
+    </button>
+    <button id="album-reset" class="reset-btn" aria-label="Reset Album">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+            <path fill="currentColor" d="M17.65,6.35C16.2,4.9 14.21,4 12,4C6.48,4 2,8.48 2,14C2,19.52 6.48,24 12,24C17.52,24 22,19.52 22,14H20C20,18.42 16.42,22 12,22C7.58,22 4,18.42 4,14C4,9.58 7.58,6 12,6C13.92,6 15.65,6.67 17,7.78L14,10.78H21V3.78L17.65,6.35Z" />
+        </svg>
+    </button>
+
+    <!-- Navigation Arrows -->
+    <button id="btn-prev" class="nav-btn nav-btn-left" aria-label="Previous Page">
+        <svg viewBox="0 0 24 24" width="36" height="36">
+            <path fill="currentColor" d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z" />
+        </svg>
+    </button>
+    <button id="btn-next" class="nav-btn nav-btn-right" aria-label="Next Page">
+        <svg viewBox="0 0 24 24" width="36" height="36">
+            <path fill="currentColor" d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
+        </svg>
+    </button>
+
+    <!-- Album Container -->
+    <div class="album-viewport" id="album-viewport">
+        <div class="flip-book" id="book">
+
+            <!-- PAGINA 0: CAPA -->
+            <div class="page page-cover" data-density="hard">
+                <div class="page-content cover-content">
+                    <div class="cover-header">
+                        <span class="cover-seal">OFFICIAL KOG COLLECTION</span>
+                    </div>
+                    <div class="cover-body">
+                        <h1 class="cover-title glitch" data-text="ELSWORD">ELSWORD</h1>
+                        <h2 class="cover-subtitle glitch" data-text="CLASSES">CLASSES</h2>
+                        <div class="cover-art">
+                            <div class="art-grid"></div>
+
+                            <!-- Floating Mini Cards Silhouette Collage -->
+                            <div class="mini-card mc-turing">
+                                <div class="mc-avatar">EL</div>
+                                <span class="mc-num">#01</span>
+                            </div>
+                            <div class="mini-card mc-guido">
+                                <div class="mc-avatar">AI</div>
+                                <span class="mc-num">#05</span>
+                            </div>
+                            <div class="mini-card mc-jobs">
+                                <div class="mc-avatar">RE</div>
+                                <span class="mc-num">#09</span>
+                            </div>
+
+                            <!-- Central Glowing 3D Tech Sphere -->
+                            <div class="tech-sphere">
+                                <div class="sphere-core">
+                                    <svg class="art-logo" viewBox="0 0 24 24">
+                                        <path d="M12 2L2 22h20L12 2zm0 4l6.5 13h-13L12 6z" />
+                                    </svg>
+                                </div>
+                                <div class="sphere-ring ring-1"></div>
+                                <div class="sphere-ring ring-2"></div>
+                            </div>
+                        </div>
+                        <p class="cover-footer-text">THE PATHS OF THE HEROES OF ELIOS</p>
+                    </div>
+                    <div class="cover-footer">
+                        <span>2026 COLLECTOR'S EDITION</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PAGINA 1: ELSWORD -->
+            <div class="page page-left page-elsword">
+                <div class="page-content">
+                    <div class="page-header">
+                        <div class="character-meta">
+                            <span class="tech-badge">ELSWORD</span>
+                            <span class="weapon-tag"><img src="icones/elsword - greatsword.png" class="weapon-icon" alt="Greatsword"> Greatsword</span>
+                        </div>
+                        <h3 class="page-title">The Knight of Elios</h3>
+                    </div>
+                    <div class="stickers-grid">
+                        <div class="sticker-slot">
+                            <div class="slot-number">#01</div>
+                            <div class="slot-name">Knight Emperor</div>
+                            <div class="slot-role">1st Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#02</div>
+                            <div class="slot-name">Rune Master</div>
+                            <div class="slot-role">2nd Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#03</div>
+                            <div class="slot-name">Immortal</div>
+                            <div class="slot-role">3rd Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#04</div>
+                            <div class="slot-name">Genesis</div>
+                            <div class="slot-role">4th Path</div>
+                        </div>
+                    </div>
+                    <div class="page-footer">Page 1</div>
+                </div>
+            </div>
+
+            <!-- PAGINA 2: AISHA -->
+            <div class="page page-right page-aisha">
+                <div class="page-content">
+                    <div class="page-header">
+                        <div class="character-meta">
+                            <span class="tech-badge">AISHA</span>
+                            <span class="weapon-tag"><img src="icones/aisha - staff.png" class="weapon-icon" alt="Staff"> Staff</span>
+                        </div>
+                        <h3 class="page-title">The Magician of Landar</h3>
+                    </div>
+                    <div class="stickers-grid">
+                        <div class="sticker-slot">
+                            <div class="slot-number">#05</div>
+                            <div class="slot-name">Aether Sage</div>
+                            <div class="slot-role">1st Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#06</div>
+                            <div class="slot-name">Oz Sorcerer</div>
+                            <div class="slot-role">2nd Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#07</div>
+                            <div class="slot-name">Metamorphy</div>
+                            <div class="slot-role">3rd Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#08</div>
+                            <div class="slot-name">Lord Azoth</div>
+                            <div class="slot-role">4th Path</div>
+                        </div>
+                    </div>
+                    <div class="page-footer">Page 2</div>
+                </div>
+            </div>
+
+            <!-- PAGINA 3: RENA -->
+            <div class="page page-left page-rena">
+                <div class="page-content">
+                    <div class="page-header">
+                        <div class="character-meta">
+                            <span class="tech-badge">RENA</span>
+                            <span class="weapon-tag"><img src="icones/rena - bow.png" class="weapon-icon" alt="Bow"> Bow</span>
+                        </div>
+                        <h3 class="page-title">The Ranger of Erindel</h3>
+                    </div>
+                    <div class="stickers-grid">
+                        <div class="sticker-slot">
+                            <div class="slot-number">#09</div>
+                            <div class="slot-name">Anemos</div>
+                            <div class="slot-role">1st Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#10</div>
+                            <div class="slot-name">Daybreaker</div>
+                            <div class="slot-role">2nd Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#11</div>
+                            <div class="slot-name">Twilight</div>
+                            <div class="slot-role">3rd Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#12</div>
+                            <div class="slot-name">Prophetess</div>
+                            <div class="slot-role">4th Path</div>
+                        </div>
+                    </div>
+                    <div class="page-footer">Page 3</div>
+                </div>
+            </div>
+
+            <!-- PAGINA 4: RAVEN -->
+            <div class="page page-right page-raven">
+                <div class="page-content">
+                    <div class="page-header">
+                        <div class="character-meta">
+                            <span class="tech-badge">RAVEN</span>
+                            <span class="weapon-tag"><img src="icones/raven - blade and nasod arm.png" class="weapon-icon" alt="Blade & Nasod Arm"> Blade & Nasod Arm</span>
+                        </div>
+                        <h3 class="page-title">The Nasod Rebel</h3>
+                    </div>
+                    <div class="stickers-grid">
+                        <div class="sticker-slot">
+                            <div class="slot-number">#13</div>
+                            <div class="slot-name">Furious Blade</div>
+                            <div class="slot-role">1st Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#14</div>
+                            <div class="slot-name">Rage Hearts</div>
+                            <div class="slot-role">2nd Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#15</div>
+                            <div class="slot-name">Nova Imperator</div>
+                            <div class="slot-role">3rd Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#16</div>
+                            <div class="slot-name">Revenant</div>
+                            <div class="slot-role">4th Path</div>
+                        </div>
+                    </div>
+                    <div class="page-footer">Page 4</div>
+                </div>
+            </div>
+
+            <!-- PAGINA 5: EVE -->
+            <div class="page page-left page-eve">
+                <div class="page-content">
+                    <div class="page-header">
+                        <div class="character-meta">
+                            <span class="tech-badge">EVE</span>
+                            <span class="weapon-tag"><img src="icones/eve - nasod drones (moby & remy).png" class="weapon-icon" alt="Nasod Drones"> Nasod Drones</span>
+                        </div>
+                        <h3 class="page-title">The Queen of Nasods</h3>
+                    </div>
+                    <div class="stickers-grid">
+                        <div class="sticker-slot">
+                            <div class="slot-number">#17</div>
+                            <div class="slot-name">Code: Ultimate</div>
+                            <div class="slot-role">1st Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#18</div>
+                            <div class="slot-name">Code: Esencia</div>
+                            <div class="slot-role">2nd Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#19</div>
+                            <div class="slot-name">Code: Sariel</div>
+                            <div class="slot-role">3rd Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#20</div>
+                            <div class="slot-name">Code: Antithese</div>
+                            <div class="slot-role">4th Path</div>
+                        </div>
+                    </div>
+                    <div class="page-footer">Page 5</div>
+                </div>
+            </div>
+
+            <!-- PAGINA 6: CHUNG -->
+            <div class="page page-right page-chung">
+                <div class="page-content">
+                    <div class="page-header">
+                        <div class="character-meta">
+                            <span class="tech-badge">CHUNG</span>
+                            <span class="weapon-tag"><img src="icones/chung - heavy cannon (destroyer).png" class="weapon-icon" alt="Heavy Cannon"> Heavy Cannon</span>
+                        </div>
+                        <h3 class="page-title">The Guardian of Hamel</h3>
+                    </div>
+                    <div class="stickers-grid">
+                        <div class="sticker-slot">
+                            <div class="slot-number">#21</div>
+                            <div class="slot-name">Comet Crusader</div>
+                            <div class="slot-role">1st Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#22</div>
+                            <div class="slot-name">Fatal Phantom</div>
+                            <div class="slot-role">2nd Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#23</div>
+                            <div class="slot-name">Centurion</div>
+                            <div class="slot-role">3rd Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#24</div>
+                            <div class="slot-name">Dius Aer</div>
+                            <div class="slot-role">4th Path</div>
+                        </div>
+                    </div>
+                    <div class="page-footer">Page 6</div>
+                </div>
+            </div>
+
+            <!-- PAGINA 7: ARA -->
+            <div class="page page-left page-ara">
+                <div class="page-content">
+                    <div class="page-header">
+                        <div class="character-meta">
+                            <span class="tech-badge">ARA</span>
+                            <span class="weapon-tag"><img src="icones/ara - spear.png" class="weapon-icon" alt="Spear"> Spear</span>
+                        </div>
+                        <h3 class="page-title">The Spear of Haan</h3>
+                    </div>
+                    <div class="stickers-grid">
+                        <div class="sticker-slot">
+                            <div class="slot-number">#25</div>
+                            <div class="slot-name">Apsara</div>
+                            <div class="slot-role">1st Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#26</div>
+                            <div class="slot-name">Devi</div>
+                            <div class="slot-role">2nd Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#27</div>
+                            <div class="slot-name">Shakti</div>
+                            <div class="slot-role">3rd Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#28</div>
+                            <div class="slot-name">Surya</div>
+                            <div class="slot-role">4th Path</div>
+                        </div>
+                    </div>
+                    <div class="page-footer">Page 7</div>
+                </div>
+            </div>
+
+            <!-- PAGINA 8: ELESIS -->
+            <div class="page page-right page-elesis">
+                <div class="page-content">
+                    <div class="page-header">
+                        <div class="character-meta">
+                            <span class="tech-badge">ELESIS</span>
+                            <span class="weapon-tag"><img src="icones/elesis - claymore.png" class="weapon-icon" alt="Claymore"> Claymore</span>
+                        </div>
+                        <h3 class="page-title">The Red Knight</h3>
+                    </div>
+                    <div class="stickers-grid">
+                        <div class="sticker-slot">
+                            <div class="slot-number">#29</div>
+                            <div class="slot-name">Empire Sword</div>
+                            <div class="slot-role">1st Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#30</div>
+                            <div class="slot-name">Flame Lord</div>
+                            <div class="slot-role">2nd Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#31</div>
+                            <div class="slot-name">Bloody Queen</div>
+                            <div class="slot-role">3rd Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#32</div>
+                            <div class="slot-name">Adrestia</div>
+                            <div class="slot-role">4th Path</div>
+                        </div>
+                    </div>
+                    <div class="page-footer">Page 8</div>
+                </div>
+            </div>
+
+            <!-- PAGINA 9: ADD -->
+            <div class="page page-left page-add">
+                <div class="page-content">
+                    <div class="page-header">
+                        <div class="character-meta">
+                            <span class="tech-badge">ADD</span>
+                            <span class="weapon-tag"><img src="icones/add - nasod dynamos.png" class="weapon-icon" alt="Nasod Dynamos"> Nasod Dynamos</span>
+                        </div>
+                        <h3 class="page-title">The Psychic Tracer</h3>
+                    </div>
+                    <div class="stickers-grid">
+                        <div class="sticker-slot">
+                            <div class="slot-number">#33</div>
+                            <div class="slot-name">Doom Bringer</div>
+                            <div class="slot-role">1st Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#34</div>
+                            <div class="slot-name">Dominator</div>
+                            <div class="slot-role">2nd Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#35</div>
+                            <div class="slot-name">Mad Paradox</div>
+                            <div class="slot-role">3rd Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#36</div>
+                            <div class="slot-name">Overmind</div>
+                            <div class="slot-role">4th Path</div>
+                        </div>
+                    </div>
+                    <div class="page-footer">Page 9</div>
+                </div>
+            </div>
+
+            <!-- PAGINA 10: LU/CIEL -->
+            <div class="page page-right page-luciel">
+                <div class="page-content">
+                    <div class="page-header">
+                        <div class="character-meta">
+                            <span class="tech-badge">LU/CIEL</span>
+                            <span class="weapon-tag"><img src="icones/luciel - magic gauntlets & gunblades.png" class="weapon-icon" alt="Gauntlets & Gunblades"> Gauntlets & Gunblades</span>
+                        </div>
+                        <h3 class="page-title">The Demonic Duo</h3>
+                    </div>
+                    <div class="stickers-grid">
+                        <div class="sticker-slot">
+                            <div class="slot-number">#37</div>
+                            <div class="slot-name">Catastrophe</div>
+                            <div class="slot-role">1st Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#38</div>
+                            <div class="slot-name">Innocent</div>
+                            <div class="slot-role">2nd Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#39</div>
+                            <div class="slot-name">Diangelion</div>
+                            <div class="slot-role">3rd Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#40</div>
+                            <div class="slot-name">Demersio</div>
+                            <div class="slot-role">4th Path</div>
+                        </div>
+                    </div>
+                    <div class="page-footer">Page 10</div>
+                </div>
+            </div>
+
+            <!-- PAGINA 11: ROSE -->
+            <div class="page page-left page-rose">
+                <div class="page-content">
+                    <div class="page-header">
+                        <div class="character-meta">
+                            <span class="tech-badge">ROSE</span>
+                            <span class="weapon-tag"><img src="icones/rose - firearms.png" class="weapon-icon" alt="Firearms"> Firearms</span>
+                        </div>
+                        <h3 class="page-title">The Royal Cartographer</h3>
+                    </div>
+                    <div class="stickers-grid">
+                        <div class="sticker-slot">
+                            <div class="slot-number">#41</div>
+                            <div class="slot-name">Tempest Burster</div>
+                            <div class="slot-role">1st Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#42</div>
+                            <div class="slot-name">Black Massacre</div>
+                            <div class="slot-role">2nd Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#43</div>
+                            <div class="slot-name">Minerva</div>
+                            <div class="slot-role">3rd Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#44</div>
+                            <div class="slot-name">Prime Operator</div>
+                            <div class="slot-role">4th Path</div>
+                        </div>
+                    </div>
+                    <div class="page-footer">Page 11</div>
+                </div>
+            </div>
+
+            <!-- PAGINA 12: AIN -->
+            <div class="page page-right page-ain">
+                <div class="page-content">
+                    <div class="page-header">
+                        <div class="character-meta">
+                            <span class="tech-badge">AIN</span>
+                            <span class="weapon-tag"><img src="icones/ain - pendulum.png" class="weapon-icon" alt="Pendulum"> Pendulum</span>
+                        </div>
+                        <h3 class="page-title">The Emissary of Goddess</h3>
+                    </div>
+                    <div class="stickers-grid">
+                        <div class="sticker-slot">
+                            <div class="slot-number">#45</div>
+                            <div class="slot-name">Richter</div>
+                            <div class="slot-role">1st Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#46</div>
+                            <div class="slot-name">Bluhen</div>
+                            <div class="slot-role">2nd Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#47</div>
+                            <div class="slot-name">Herrscher</div>
+                            <div class="slot-role">3rd Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#48</div>
+                            <div class="slot-name">Bigott</div>
+                            <div class="slot-role">4th Path</div>
+                        </div>
+                    </div>
+                    <div class="page-footer">Page 12</div>
+                </div>
+            </div>
+
+            <!-- PAGINA 13: LABY -->
+            <div class="page page-left page-laby">
+                <div class="page-content">
+                    <div class="page-header">
+                        <div class="character-meta">
+                            <span class="tech-badge">LABY</span>
+                            <span class="weapon-tag"><img src="icones/laby - mirror (nisha).png" class="weapon-icon" alt="Mirror"> Mirror</span>
+                        </div>
+                        <h3 class="page-title">The Child of Black Forest</h3>
+                    </div>
+                    <div class="stickers-grid">
+                        <div class="sticker-slot">
+                            <div class="slot-number">#49</div>
+                            <div class="slot-name">Eternity Winner</div>
+                            <div class="slot-role">1st Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#50</div>
+                            <div class="slot-name">Radiant Soul</div>
+                            <div class="slot-role">2nd Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#51</div>
+                            <div class="slot-name">Nisha Labyrinth</div>
+                            <div class="slot-role">3rd Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#52</div>
+                            <div class="slot-name">Twins Picaro</div>
+                            <div class="slot-role">4th Path</div>
+                        </div>
+                    </div>
+                    <div class="page-footer">Page 13</div>
+                </div>
+            </div>
+
+            <!-- PAGINA 14: NOAH -->
+            <div class="page page-right page-noah">
+                <div class="page-content">
+                    <div class="page-header">
+                        <div class="character-meta">
+                            <span class="tech-badge">NOAH</span>
+                            <span class="weapon-tag"><img src="icones/noah - sickle.png" class="weapon-icon" alt="Sickle"> Sickle</span>
+                        </div>
+                        <h3 class="page-title">The Shadow of Harpe</h3>
+                    </div>
+                    <div class="stickers-grid">
+                        <div class="sticker-slot">
+                            <div class="slot-number">#53</div>
+                            <div class="slot-name">Liberator</div>
+                            <div class="slot-role">1st Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#54</div>
+                            <div class="slot-name">Celestia</div>
+                            <div class="slot-role">2nd Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#55</div>
+                            <div class="slot-name">Nyx Pieta</div>
+                            <div class="slot-role">3rd Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#56</div>
+                            <div class="slot-name">Morpheus</div>
+                            <div class="slot-role">4th Path</div>
+                        </div>
+                    </div>
+                    <div class="page-footer">Page 14</div>
+                </div>
+            </div>
+
+            <!-- PAGINA 15: LITHIA -->
+            <div class="page page-left page-lithia">
+                <div class="page-content">
+                    <div class="page-header">
+                        <div class="character-meta">
+                            <span class="tech-badge">LITHIA</span>
+                            <span class="weapon-tag"><img src="icones/lithia - pickaxe staff.png" class="weapon-icon" alt="Pickaxe"> Pickaxe</span>
+                        </div>
+                        <h3 class="page-title">The Joyful Excavator</h3>
+                    </div>
+                    <div class="stickers-grid">
+                        <div class="sticker-slot">
+                            <div class="slot-number">#57</div>
+                            <div class="slot-name">Gembliss</div>
+                            <div class="slot-role">1st Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#58</div>
+                            <div class="slot-name">Avarice</div>
+                            <div class="slot-role">2nd Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#59</div>
+                            <div class="slot-name">Achlys</div>
+                            <div class="slot-role">3rd Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#60</div>
+                            <div class="slot-name">Mischief</div>
+                            <div class="slot-role">4th Path</div>
+                        </div>
+                    </div>
+                    <div class="page-footer">Page 15</div>
+                </div>
+            </div>
+
+            <!-- PAGINA 16: VOCÊ (PERSONALIZADA) -->
+            <div class="page page-right page-player">
+                <div class="page-content">
+                    <div class="page-header">
+                        <span class="tech-badge">PLAYER</span>
+                        <h3 class="page-title">Your Elios Journey</h3>
+                    </div>
+                    <div class="stickers-grid">
+                        <div class="sticker-slot">
+                            <div class="slot-number">#61</div>
+                            <div class="slot-name">My Main Class</div>
+                            <div class="slot-role">Favorite Path</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#62</div>
+                            <div class="slot-name">My Favorite Costume</div>
+                            <div class="slot-role">Customization</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#63</div>
+                            <div class="slot-name">My Guild</div>
+                            <div class="slot-role">Community</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#64</div>
+                            <div class="slot-name">Ultimate Achievement</div>
+                            <div class="slot-role">Great Feat</div>
+                        </div>
+                    </div>
+                    <div class="page-footer">Page 16</div>
+                </div>
+            </div>
+
+            <!-- PAGINA 17: CONTRACAPA -->
+            <div class="page page-cover-back" data-density="hard">
+                <div class="page-content cover-back-content">
+                    <div class="cover-back-header">
+                        <h2>ELSWORD ALBUM</h2>
+                    </div>
+                    <div class="cover-back-body">
+                        <div class="tech-logo-collage">
+                            <span>ELSWORD</span> • <span>AISHA</span> • <span>RENA</span> • <span>RAVEN</span> • <span>EVE</span> • <span>CHUNG</span> • <span>ARA</span> • <span>ELESIS</span> • <span>ADD</span> • <span>LU/CIEL</span> • <span>ROSE</span> • <span>AIN</span> • <span>LABY</span> • <span>NOAH</span> • <span>LITHIA</span>
+                        </div>
+                        <p class="summary-text">
+                            The Elsword Album is an interactive tribute to the history, growth, and paths of power of the heroes of Elios.
+                        </p>
+                        <div class="barcode-container">
+                            <div class="barcode">
+                                <!-- Simulated barcode lines -->
+                                <div class="bar"></div>
+                                <div class="bar thin"></div>
+                                <div class="bar"></div>
+                                <div class="bar thick"></div>
+                                <div class="bar thin"></div>
+                                <div class="bar"></div>
+                                <div class="bar thick"></div>
+                                <div class="bar"></div>
+                                <div class="bar thin"></div>
+                                <div class="bar thick"></div>
+                            </div>
+                            <span class="barcode-number">9 788575 228494</span>
+                        </div>
+                    </div>
+                    <div class="cover-back-footer">
+                        <span>July • KOG Games • 2026</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Theme Toggle Button (Bottom-Right) -->
+    <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme">
+        <!-- Sun icon (for dark mode -> light mode) -->
+        <svg class="theme-icon-sun" viewBox="0 0 24 24" width="24" height="24">
+            <path fill="currentColor" d="M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9M12,2A1,1 0 0,1 13,3V5A1,1 0 0,1 12,6A1,1 0 0,1 11,5V3A1,1 0 0,1 12,2M12,18A1,1 0 0,1 13,19V21A1,1 0 0,1 12,22A1,1 0 0,1 11,21V19A1,1 0 0,1 12,18M5,12A1,1 0 0,1 6,11H8A1,1 0 0,1 9,12A1,1 0 0,1 8,13H6A1,1 0 0,1 5,12M18,12A1,1 0 0,1 19,11H21A1,1 0 0,1 22,12A1,1 0 0,1 21,13H19A1,1 0 0,1 18,12M5.64,17.24A1,1 0 0,1 7.05,17.24L8.46,18.66A1,1 0 0,1 8.46,20.07A1,1 0 0,1 7.05,20.07L5.64,18.66A1,1 0 0,1 5.64,17.24M15.54,7.36A1,1 0 0,1 16.95,7.36L18.36,8.78A1,1 0 0,1 18.36,10.19A1,1 0 0,1 16.95,10.19L15.54,8.78A1,1 0 0,1 15.54,7.36M5.64,6.76A1,1 0 0,1 7.05,5.34L8.46,6.76A1,1 0 0,1 8.46,8.17A1,1 0 0,1 7.05,8.17L5.64,6.76A1,1 0 0,1 5.64,6.76M15.54,16.64A1,1 0 0,1 16.95,15.22L18.36,16.64A1,1 0 0,1 18.36,18.05A1,1 0 0,1 16.95,18.05L15.54,16.64A1,1 0 0,1 15.54,16.64Z" />
+        </svg>
+        <!-- Moon icon (for light mode -> dark mode) -->
+        <svg class="theme-icon-moon hidden" viewBox="0 0 24 24" width="24" height="24">
+            <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-4.08 3.05-7.44 7-7.93v15.86z"/>
+        </svg>
+    </button>
+
+    <!-- Page Flip Library -->
+    <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js"></script>
+    <!-- Logic -->
+    <script src="app.js"></script>
+</body>
+
+</html>
